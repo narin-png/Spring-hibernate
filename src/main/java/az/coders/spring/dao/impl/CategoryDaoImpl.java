@@ -4,6 +4,8 @@ import az.coders.spring.dao.CategoryDao;
 import az.coders.spring.dao.CommonDao;
 import az.coders.spring.domain.Category;
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import jakarta.transaction.Transactional;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,8 @@ public class CategoryDaoImpl extends CommonDaoImpl<Category,Integer> implements 
     private SessionFactory sessionFactory;
 
     @Override
-    public void findByName(String name) {
-
+    public List<Category> findByName(String name) {
+        return List.of();
     }
 
 

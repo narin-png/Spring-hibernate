@@ -4,6 +4,6 @@ import az.coders.spring.domain.Product;
 
 import java.util.List;
 
-public interface ProductDao   {
-    void findByName(String name);
+public interface ProductDao extends CommonDao<Product,Integer>  {
+    List<Product> findByName(String name);
 }

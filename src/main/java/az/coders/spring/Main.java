@@ -2,6 +2,7 @@ package az.coders.spring;
 
 import az.coders.spring.config.SpringHibernateConfig;
 import az.coders.spring.dao.CategoryDao;
+import az.coders.spring.dao.CommonDao;
 import az.coders.spring.dao.ProductDao;
 import az.coders.spring.domain.Category;
 import jdk.swing.interop.SwingInterOpUtils;
@@ -26,6 +27,9 @@ public class Main {
 //        categoryDao.update(1111, category);
 //        System.out.println(categoryDao.findAll());
 //        categoryDao.delete(1111);
-        System.out.println(productDao.findAll());
+        CommonDao commonDao= applicationContext.getBean("commonDaoImpl", CommonDao.class);
+        System.out.println(commonDao.findAll(Category.class));
+        CategoryDao categoryDao= applicationContext.getBean("categoryDaoImpl", CategoryDao.class);
+        categoryDao.save(new Category("new name", "new description"));
     }
 }

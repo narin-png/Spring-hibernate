@@ -24,17 +24,21 @@ sessionFactory.getCurrentSession().update(entity);
     }
 
     @Override
-    public void delete(T id) {
-sessionFactory.getCurrentSession().delete(findById(id));
+    public void delete(Class<E> entityclass,T id) {
+sessionFactory.getCurrentSession().delete(findById(entityclass,id));
     }
 
     @Override
-    public Category findById(T id) {
-        return sessionFactory.getCurrentSession().get(Category.class, id);
+    public E findById(Class<E>entityclass,T id) {
+        return sessionFactory.getCurrentSession().get(entityclass, id);
     }
 
     @Override
-    public List<E> findAll() {
-        return sessionFactory.getCurrentSession().createQuery("from E").list();
+    public List<E> findAll(Class<E> entityclass) {
+            return sessionFactory.getCurrentSession()
+                    .createQuery("from " + entityclass.getSimpleName(), entityclass)
+                    .list();
+
+
     }
 }

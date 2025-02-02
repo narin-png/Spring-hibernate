@@ -1,0 +1,4 @@
+datasource:
+  url:jdbc:postgresql://localhost:5432/testdatabase
+  username:postgres
+  password:2005

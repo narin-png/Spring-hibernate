@@ -1,9 +1,6 @@
 package az.coders.spring.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -14,9 +11,16 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq")
+    @SequenceGenerator(name="seq",sequenceName = "seq_categories",allocationSize=1)
     @Column(name="category_id")
     private int id;
     @Column(name="category_name")
     private String name;
     private String description;
+
+    public Category(String description, String name) {
+        this.description = description;
+        this.name = name;
+    }
 }

@@ -18,10 +18,11 @@ public class ProductDaoImpl  extends CommonDaoImpl<Product,Integer> implements P
     private SessionFactory sessionFactory;
 
     @Override
-    public void findByName(String name) {
-
+    public List<Product> findByName(String name) {
+        return List.of();
     }
-//
+
+
 //    @Override
 //    public void save(Product product) {
 //        sessionFactory.getCurrentSession().persist(product);
